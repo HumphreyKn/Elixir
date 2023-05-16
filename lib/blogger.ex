@@ -1,4 +1,5 @@
 defmodule Blogger do
+  @spec fetch_blog :: any
   def fetch_blog do
     url = "https://medium.com/podiihq/quick-connect-to-your-amazon-ec2-linux-instance-through-the-command-line-6c682960ef91"
     {:ok, %HTTPoison.Response{body: body}}= HTTPoison.get(url)
@@ -8,13 +9,16 @@ defmodule Blogger do
     #body
   end
 
+  @spec list_uppercase(my_list::list()) :: list
   def list_uppercase(my_list) do
     Enum.map(my_list, fn(x)->String.upcase(x) end)
   end
+  @spec list_uppercase2 :: list
   def list_uppercase2() do
     Enum.map(["nairobi","kisumu","eldoret"], &String.upcase/1)
   end
 
+  @spec first_element_uppercase :: [binary, ...]
   @doc """
   Converting only the first element of a list to uppercase
     - The list contains three lements that are in lowercase; "nairobi","kisumu" and"eldoret"
